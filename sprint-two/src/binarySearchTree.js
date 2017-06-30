@@ -9,60 +9,61 @@ var BinarySearchTree = function(value) {
     
     var findNode = function (root) {
 
-      if (root === null) {
-        return;
-      }
-
-      if (root.nodes.value >= value) {
-        var leftNode = root.nodes.left;
-        if (leftNode !== undefined) {
-          find(leftNode);
+      if (root.value > value) {
+        if (root.left !== null) {
+          findNode(root.left);
         } else {
-          leftNode = node;
+          root.left = node;
         }
       } else {
-        var rightNode = root.nodes.right;
-        if (rightNode !== undefined) {
-          find(rightNode);
+        if (root.right !== null) {
+          findNode(root.right);
         } else {
-          rightNode = node;
+          root.right = node;
         }      
       }
     };
 
     findNode(this);
-    
   };
 
   nodes.contains = function (value) {
+    var result = false;
     var findNode = function (root) {
 
-      if (root === null) {
-        return;
-      }
+     
       if (root.value === value) {
-        return true;
+        return result = true;
       }
-      if (root.nodes.value >= value) {
-        var leftNode = root.nodes.left;
-        if (leftNode !== undefined) {
-          return find(leftNode);
+      if (root.value > value) {
+        if (root.left !== null) {
+          findNode(root.left );
         } 
       } else {
-        var rightNode = root.nodes.right;
-        if (rightNode !== undefined) {
-          return find(rightNode);
+        if (root.right !== null) {
+          findNode(root.right);
         }        
       }
     };
 
     findNode(this);
-    return false;
+    return result;
 
   };
 
-  nodes.depthFirstLog = function () {
+  nodes.depthFirstLog = function (cb) {
+    var findNode = function(root) {
+      if (root === null) {
+        return; 
+      }
 
+      cb(root.value);    
+      findNode(root.left);
+      findNode(root.right);
+      
+    };
+
+    findNode(this);
   };
 
   return nodes;
