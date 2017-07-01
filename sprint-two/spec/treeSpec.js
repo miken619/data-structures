@@ -37,8 +37,12 @@ describe('tree', function() {
     tree.addChild(6);
     tree.children[0].addChild(7);
     tree.children[1].addChild(8);
+    tree.addChild(9);
+    tree.addChild(10);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+    expect(tree.contains(9)).to.equal(true);
+    expect(tree.contains(10)).to.equal(true);
   });
 
 });

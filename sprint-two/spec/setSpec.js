@@ -14,8 +14,10 @@ describe('set', function() {
   it('should add values to a set', function() {
     set.add('Susan Sarandon');
     set.add('Danny Glover');
+    set.add('John Smith');
     expect(set.contains('Danny Glover')).to.equal(true);
     expect(set.contains('Susan Sarandon')).to.equal(true);
+    expect(set.contains('John Smith')).to.equal(true);
   });
 
   it('should remove values from a set', function() {

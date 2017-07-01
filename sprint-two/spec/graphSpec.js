@@ -17,7 +17,12 @@ describe('graph', function() {
 
   it('should store values as nodes that were inserted', function() {
     graph.addNode(1);
+    graph.addNode(7);
+    graph.addNode(8);
     expect(graph.contains(1)).to.equal(true);
+    expect(graph.contains(7)).to.equal(true);
+    expect(graph.contains(8)).to.equal(true);
+    
   });
 
   it('should remove nodes that were inserted', function() {
